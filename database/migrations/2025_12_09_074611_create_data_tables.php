@@ -1,0 +1,41 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('data_tables', function (Blueprint $table) {
+            $table->id();
+			$table->string('code_b1_b2_edgetape', 10);
+			$table->string('code_b2', 10)->nullable();
+			$table->integer('width');
+			$table->decimal('angel', 3, 1);
+			$table->decimal('ga', 3, 1);
+			$table->string('compd');
+			$table->string('treat_code');
+			$table->string('belt_cord');
+			$table->string('direction');
+			$table->string('posisi_edgetape');
+			$table->string('edgetape_b1');
+			$table->string('turn');
+			$table->string('code_wraping');
+			$table->integer('width_after_wraping');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('data_tables');
+    }
+};
