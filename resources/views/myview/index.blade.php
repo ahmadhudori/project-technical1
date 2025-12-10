@@ -51,7 +51,7 @@
 					@foreach ($datas as $data)
 						<tr> 
 						<td>{{ $loop->iteration }}</td> 
-						<td>{{ $data->code_b1_b2_edgetape }}</td> 
+						<td><a href="{{ route('edit', $data->id) }}">{{ $data->code_b1_b2_edgetape }}</a></td> 
 						<td>{{ $data->code_b2 }}</td> 
 						<td>{{ $data->width }}</td> 
 						<td>{{ $data->angel }}</td> 
@@ -96,7 +96,7 @@
 					</div> 
 					<div class="form-group"> 
 						<label for="width">WIDTH</label> 
-						<input type="number" name="width" id="width" class="form-control" > 
+						<input type="number" name="width" id="width" class="form-control" step="any" > 
 					</div> 
 					<div class="form-group"> 
 						<label for="angel">ANGEL</label> 

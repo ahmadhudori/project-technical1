@@ -20,5 +20,6 @@ require __DIR__.'/auth.php';
 
 
 Route::post('/add', [IndexController::class, 'store'])->name('store');
-Route::post('/update', [IndexController::class, 'update'])->name('update');
+Route::get('/edit/{id}', [IndexController::class, 'edit'])->name('edit');
+Route::put('/update/{id}', [IndexController::class, 'update'])->name('update');
 Route::post('/delete', [IndexController::class, 'delete'])->name('delete');
