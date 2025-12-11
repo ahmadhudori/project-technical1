@@ -102,6 +102,6 @@ class IndexController extends Controller
 		$data = DataTable::findOrFail($id);
 		$data->update($request->all());
 		Alert::success('Update data success');
-		return redirect()->route('index');
+		return redirect()->route('dashboard');
 	}
 }

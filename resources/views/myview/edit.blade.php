@@ -1,4 +1,17 @@
 @extends('layouts.layout')
+@section('style')
+<style>
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+</style>
+@endsection
 @section('content')
 @include('sweetalert::alert')
 <form action="{{ route('update', $data->id) }}" method="POST"> 
