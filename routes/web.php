@@ -23,3 +23,5 @@ Route::post('/add', [IndexController::class, 'store'])->name('store');
 Route::get('/edit/{id}', [IndexController::class, 'edit'])->name('edit');
 Route::put('/update/{id}', [IndexController::class, 'update'])->name('update');
 Route::post('/delete', [IndexController::class, 'delete'])->name('delete');
+
+Route::post('/data-table/import', [IndexController::class, 'import'])->name('import');

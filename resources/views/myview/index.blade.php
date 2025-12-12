@@ -19,12 +19,19 @@
 @section('content')
 @include('sweetalert::alert')
 <h1>Ini Halaman Index Myview</h1>
-<div class="card-header py-3" align="right"> 
+<div class="card-header py-3 mb-3 d-flex justify-content-between align-items-center"> 
 	<button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#exampleModalScrollable">
 	<i class="fas fa-plus fa-sm text-white-50"></i> Tambah 
-	</button> 
+	</button>
+	<form id="importForm" action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <input type="file" id="fileInput" name="file" accept=".csv,.txt,.xlsx" style="display: none;" onchange="document.getElementById('importForm').submit();">
+		<button type="button" class="btn btn-success btn-sm" onclick="document.getElementById('fileInput').click();">
+			<i class="fa fa-upload"></i> Import Data
+		</button>
+	</form> 
 </div> 
-<div class="d-sm-flex align-items-center justify-content-between mb-4"> 
+<div class="d-sm-flex align-items-center justify-content-between mb-4 overflow-auto"> 
 	<div class="card-body"> 
 		<div class="table-responsive"> 
 			<table class="table table-sm table-bordered table-striped small-table" id="dataTable" width="100%" cellspacing="0">

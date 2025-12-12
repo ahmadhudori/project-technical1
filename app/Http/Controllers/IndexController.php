@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\DataTableImport;
 use App\Models\DataTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+use Maatwebsite\Excel\Facades\Excel;
 
 class IndexController extends Controller
 {
@@ -103,5 +105,21 @@ class IndexController extends Controller
 		$data->update($request->all());
 		Alert::success('Update data success');
 		return redirect()->route('dashboard');
+	}
+
+	public function import(Request $request)
+	{
+		try {
+			$request->validate([
+			'file' => 'required|mimes:csv,txt,xlsx'
+		]);
+		
+		Excel::import(new DataTableImport, $request->file('file'));
+		Alert::success('Import data success');
+		return redirect()->route('dashboard');
+		} catch (\Exception $e) {
+			Alert::error($e->getMessage());
+			return redirect()->route('dashboard');
+		}
 	}
 }
