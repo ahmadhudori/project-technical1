@@ -17,8 +17,14 @@ class IndexController extends Controller
 		return view('myview.index', compact('datas'));
 	}
 
+	public function create()
+	{
+		return view('myview.create');
+	}
+
 	public function store(Request $request)
 	{
+		// dd($request->all());
 		$validation = Validator::make($request->all(), [
 			'code_b1_b2_edgetape' => 'required',
 			'width' => 'required',
@@ -31,8 +37,8 @@ class IndexController extends Controller
 			'posisi_edgetape' => 'required',
 			'edgetape_b1' => 'required',
 			'turn' => 'required',
-			'code_wraping' => 'required',
-			'width_after_wraping' => 'required',
+			'code_wraping' => 'nullable',
+			'width_after_wraping' => 'required_with:code_wraping',
 		], [
 			'code_b1_b2_edgetape.required' => 'Code B1/B2 Edgetape Harus Diisi',
 			'width.required' => 'Width Harus Diisi',
@@ -45,8 +51,7 @@ class IndexController extends Controller
 			'posisi_edgetape.required' => 'Posisi Edgetape Harus Diisi',
 			'edgetape_b1.required' => 'Edgetape B1 Harus Diisi',
 			'turn.required' => 'Turn Harus Diisi',
-			'code_wraping.required' => 'Code Wraping Harus Diisi',
-			'width_after_wraping.required' => 'Width After Wraping Harus Diisi',
+			'width_after_wraping.required_with' => 'Width After Wraping Harus Diisi Jika Code Wrapping Diisi',
 		]);
 
 		if ($validation->fails()) {
@@ -55,7 +60,7 @@ class IndexController extends Controller
 		} else {
 			DataTable::create($request->all());
 			Alert::success('Creating data success');
-			return redirect()->back();
+			return redirect()->route('dashboard');
 		}
 	}
 

@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 
+Route::get('/create', [IndexController::class, 'create'])->name('create');
 Route::post('/add', [IndexController::class, 'store'])->name('store');
 Route::get('/edit/{id}', [IndexController::class, 'edit'])->name('edit');
 Route::put('/update/{id}', [IndexController::class, 'update'])->name('update');

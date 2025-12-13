@@ -20,9 +20,11 @@
 @include('sweetalert::alert')
 <h1>Ini Halaman Index Myview</h1>
 <div class="card-header py-3 mb-3 d-flex justify-content-between align-items-center"> 
-	<button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#exampleModalScrollable">
+	<a href="{{ route('create') }}">
+		<button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#exampleModalScrollable">
 	<i class="fas fa-plus fa-sm text-white-50"></i> Tambah 
 	</button>
+	</a>
 	<form id="importForm" action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <input type="file" id="fileInput" name="file" accept=".csv,.txt,.xlsx" style="display: none;" onchange="document.getElementById('importForm').submit();">
@@ -81,7 +83,7 @@
 </div> 
  
 <!-- Modal Add Barang -->
-<div class="modal fade" id="exampleModalScrollable" tabindex="1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true"> 
+{{-- <div class="modal fade" id="exampleModalScrollable" tabindex="1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true"> 
 	<div class="modal-dialog modal-dialog-scrollable" role="document">
 		<div class="modal-content"> 
 			<div class="modal-header"> 
@@ -157,7 +159,7 @@
 			</form> 
 		</div>
 	</div> 
-</div>
+</div> --}}
 @if ($errors->any())
 <script>
     document.addEventListener('DOMContentLoaded', function () {
