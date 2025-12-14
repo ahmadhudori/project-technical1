@@ -121,7 +121,7 @@
     </fieldset> 
     <div class="col-md-10"> 
         <input type="submit" class="btn btn-success btn-send" value="Tambah Data"> 
-        <a href="{{ url()->previous() }}"><input type="Button" class="btn btn-primary btn-send" value="Kembali"></a> 
+        <a href="{{ route('dashboard') }}"><input type="Button" class="btn btn-primary btn-send" value="Kembali"></a> 
     </div> 
     <hr> 
 </form> 

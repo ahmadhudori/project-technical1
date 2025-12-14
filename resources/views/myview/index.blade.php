@@ -25,13 +25,52 @@
 	<i class="fas fa-plus fa-sm text-white-50"></i> Tambah 
 	</button>
 	</a>
-	<form id="importForm" action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    <input type="file" id="fileInput" name="file" accept=".csv,.txt,.xlsx" style="display: none;" onchange="document.getElementById('importForm').submit();">
-		<button type="button" class="btn btn-success btn-sm" onclick="document.getElementById('fileInput').click();">
-			<i class="fa fa-upload"></i> Import Data
-		</button>
-	</form> 
+	<div class="d-flex">
+		{{-- form import --}}
+		<form id="importForm" action="{{ route('import') }}" method="POST" enctype="multipart/form-data" class="mr-2">
+			@csrf
+			<input type="file" id="fileInput" name="file" accept=".csv,.txt,.xlsx" style="display: none;" onchange="document.getElementById('importForm').submit();">
+			<button type="button" class="btn btn-outline-success btn-sm" onclick="document.getElementById('fileInput').click();">
+				<i class="fa fa-upload"></i> Import Data
+			</button>
+		</form>
+		{{-- form export --}}
+		<div>
+			<button type="submit" class="btn btn-outline-danger btn-sm btn-shadow-sm" data-toggle="modal" data-target="#modalExport">
+				<i class="fa fa-download"></i> Export Data
+			</button>
+			<!-- Modal -->
+			<div class="modal fade" id="modalExport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<form action="{{ route('export') }}" method="GET" id="exportForm">
+							@csrf
+							<div class="modal-body">
+								<div class="form-group">
+									<label for="export_format">Pilih Format Export:</label>
+									<select class="custom-select" id="export_format" name="export_format" required>
+										<option value="csv">CSV</option>
+										<option value="txt">TXT</option>
+										<option value="xlsx">XLSX</option>
+									</select>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-primary">Export</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div> 
+	</div>
 </div> 
 <div class="d-sm-flex align-items-center justify-content-between mb-4 overflow-auto"> 
 	<div class="card-body"> 
@@ -68,10 +107,18 @@
 						<td>{{ $data->compd }}</td> 
 						<td>{{ $data->treat_code }}</td> 
 						<td>{{ $data->belt_cord }}</td> 
-						<td>{{ $data->direction }}</td> 
-						<td>{{ $data->posisi_edgetape }}</td> 
+						<td>
+							@if ($data->direction == 'lay_left')
+								LAY LEFT
+							@elseif($data->direction == 'lay_right')
+								LAY RIGHT
+							@else
+								LAY RIGHT/LEFT
+							@endif
+						</td> 
+						<td>{{ $data->posisi_edgetape == 'atas' ? 'ATAS' : 'TIDAK ADA' }}</td> 
 						<td>{{ $data->edgetape_b1 }}</td> 
-						<td>{{ $data->turn }}</td> 
+						<td>{{ $data->turn == 'normal' ? 'NORMAL' : 'DI BALIK 2 KALI' }}</td> 
 						<td>{{ $data->code_wraping }}</td> 
 						<td>{{ $data->width_after_wraping }}</td> 
 					</tr>

@@ -64,12 +64,31 @@
 			 {{-- DIRECTION  --}} 
             <div class="col-md-5 mb-3"> 
                 <label for="direction" class="@error('direction') text-danger @enderror">DIRECTION</label> 
-                <input type="text" name="direction" id="direction" class="form-control" value="{{ old('direction', $data->direction) }}"> 
+                <div class="input-group mb-3">
+					<select class="custom-select" id="direction" name="direction">
+						<option>Choose...</option>
+						<option value="lay_right" @selected(old('direction') || $data->direction == 'lay_right')>LAY RIGHT</option>
+						<option value="lay_left" @selected(old('direction') || $data->direction == 'lay_left')>LAY LEFT</option>
+						<option value="lay_right_left" @selected(old('direction' || $data->direction == 'lay_right_left'))>LAY RIGHT/LEFT</option>
+					</select>
+					<div class="input-group-append">
+						<label class="input-group-text" for="inputGroupSelect02">Options</label>
+					</div>
+				</div> 
             </div>
 			 {{-- POSISI EDGETAPE  --}} 
             <div class="col-md-5 mb-3"> 
                 <label for="posisi_edgetape" class="@error('posisi_edgetape') text-danger @enderror">POSISI EDGETAPE</label> 
-                <input type="text" name="posisi_edgetape" class="form-control" id="posisi_edgetape" value="{{ old('posisi_edgetape', $data->posisi_edgetape) }}"> 
+                <div class="input-group mb-3">
+					<select class="custom-select" id="posisi_edgetape" name="posisi_edgetape">
+						<option>Choose...</option>
+						<option value="atas" @selected(old('posisi_edgetape') || $data->posisi_edgetape == 'atas')>ATAS</option>
+						<option value="tidak_ada" @selected(old('posisi_edgetape') || $data->posisi_edgetape == 'tidak_ada')>TIDAK ADA</option>
+					</select>
+					<div class="input-group-append">
+						<label class="input-group-text" for="inputGroupSelect02">Options</label>
+					</div>
+				</div> 
             </div> 
 			 {{-- EDGETAPE B1  --}}
             <div class="col-md-5 mb-3"> 
@@ -79,7 +98,16 @@
 			 {{-- TURN  --}} 
             <div class="col-md-5 mb-3"> 
                 <label for="turn" class="@error('turn') text-danger @enderror">TURN</label> 
-                <input type="text" name="turn" id="turn" class="form-control" value="{{ old('turn', $data->turn) }}"> 
+                <div class="input-group mb-3">
+					<select class="custom-select" id="turn" name="turn">
+						<option>Choose...</option>
+						<option value="normal" @selected(old('turn') || $data->turn == 'normal')>NORMAL</option>
+						<option value="dibalik_2_kali" @selected(old('turn') || $data->turn == 'dibalik_2_kali')>DI BALIK 2 KALI</option>
+					</select>
+					<div class="input-group-append">
+						<label class="input-group-text" for="inputGroupSelect02">Options</label>
+					</div>
+				</div> 
             </div> 
 			 {{-- CODE WRAPING  --}}
             <div class="col-md-5 mb-3"> 
@@ -94,7 +122,7 @@
     </fieldset> 
     <div class="col-md-10"> 
         <input type="submit" class="btn btn-success btn-send" value="Update"> 
-        <a href="{{ url()->previous() }}"><input type="Button" class="btn btn-primary btn-send" value="Kembali"></a> 
+        <a href="{{ route('dashboard') }}"><input type="Button" class="btn btn-primary btn-send" value="Kembali"></a> 
     </div> 
     <hr> 
 </form> 

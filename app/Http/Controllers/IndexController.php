@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DataTableExport;
 use App\Imports\DataTableImport;
 use App\Models\DataTable;
 use Illuminate\Http\Request;
@@ -84,8 +85,8 @@ class IndexController extends Controller
 			'posisi_edgetape' => 'required',
 			'edgetape_b1' => 'required',
 			'turn' => 'required',
-			'code_wraping' => 'required',
-			'width_after_wraping' => 'required',
+			'code_wraping' => 'nullable',
+			'width_after_wraping' => 'required_with:code_wraping',
 		], [
 			'code_b1_b2_edgetape.required' => 'Code B1/B2 Edgetape Harus Diisi',
 			'width.required' => 'Width Harus Diisi',
@@ -98,8 +99,7 @@ class IndexController extends Controller
 			'posisi_edgetape.required' => 'Posisi Edgetape Harus Diisi',
 			'edgetape_b1.required' => 'Edgetape B1 Harus Diisi',
 			'turn.required' => 'Turn Harus Diisi',
-			'code_wraping.required' => 'Code Wraping Harus Diisi',
-			'width_after_wraping.required' => 'Width After Wraping Harus Diisi',
+			'width_after_wraping.required_with' => 'Width After Wraping Harus Diisi jika Code Wrapping Diisi',
 		]);
 
 		if ($validation->fails()) {
@@ -125,6 +125,20 @@ class IndexController extends Controller
 		} catch (\Exception $e) {
 			Alert::error($e->getMessage());
 			return redirect()->route('dashboard');
+		}
+	}
+
+	public function export(Request $request)
+	{
+		$format = $request->export_format;
+		$file_name = 'Table-Steel' . now()->format('Ymd-His');
+
+		if ($format == 'csv') {
+			return Excel::download(new DataTableExport, $file_name . '.csv', \Maatwebsite\Excel\Excel::CSV);
+		} elseif ($format == 'xlsx') {
+			return Excel::download(new DataTableExport, $file_name . '.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+		} else {
+			return Excel::download(new DataTableExport, $file_name . '.txt', \Maatwebsite\Excel\Excel::TSV);
 		}
 	}
 }

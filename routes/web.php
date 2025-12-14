@@ -26,3 +26,4 @@ Route::put('/update/{id}', [IndexController::class, 'update'])->name('update');
 Route::post('/delete', [IndexController::class, 'delete'])->name('delete');
 
 Route::post('/data-table/import', [IndexController::class, 'import'])->name('import');
+Route::get('/data-table/export', [IndexController::class, 'export'])->name('export');
