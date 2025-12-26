@@ -66,9 +66,9 @@
 				<div class="input-group mb-3">
 					<select class="custom-select" id="direction" name="direction">
 						<option>Choose...</option>
-						<option value="lay_right" @selected(old('direction') == 'lay_right')>LAY RIGHT</option>
-						<option value="lay_left" @selected(old('direction') == 'lay_left')>LAY LEFT</option>
-						<option value="lay_right_left" @selected(old('direction' == 'lay_right_left'))>LAY RIGHT/LEFT</option>
+						<option value="LAY RIGHT" @selected(old('direction') == 'LAY RIGHT')>LAY RIGHT</option>
+						<option value="LAY LEFT" @selected(old('direction') == 'LAY LEFT')>LAY LEFT</option>
+						<option value="LAY RIGHT/LEFT" @selected(old('direction' == 'LAY RIGHT/LEFT'))>LAY RIGHT/LEFT</option>
 					</select>
 					<div class="input-group-append">
 						<label class="input-group-text" for="inputGroupSelect02">Options</label>
@@ -81,8 +81,8 @@
 				<div class="input-group mb-3">
 					<select class="custom-select" id="posisi_edgetape" name="posisi_edgetape">
 						<option>Choose...</option>
-						<option value="atas" @selected(old('posisi_edgetape') == 'atas')>ATAS</option>
-						<option value="tidak_ada" @selected(old('posisi_edgetape') == 'tidak_ada')>TIDAK ADA</option>
+						<option value="ATAS" @selected(old('posisi_edgetape') == 'ATAS')>ATAS</option>
+						<option value="TIDAK ADA" @selected(old('posisi_edgetape') == 'TIDAK ADA')>TIDAK ADA</option>
 					</select>
 					<div class="input-group-append">
 						<label class="input-group-text" for="inputGroupSelect02">Options</label>
@@ -100,8 +100,8 @@
 				<div class="input-group mb-3">
 					<select class="custom-select" id="turn" name="turn">
 						<option>Choose...</option>
-						<option value="normal" @selected(old('turn') == 'normal')>NORMAL</option>
-						<option value="dibalik_2_kali" @selected(old('turn') == 'dibalik_2_kali')>DI BALIK 2 KALI</option>
+						<option value="NORMAL" @selected(old('turn') == 'NORMAL')>NORMAL</option>
+						<option value="DIBALIK 2 KALI" @selected(old('turn') == 'DIBALIK 2 KALI')>DI BALIK 2 KALI</option>
 					</select>
 					<div class="input-group-append">
 						<label class="input-group-text" for="inputGroupSelect02">Options</label>

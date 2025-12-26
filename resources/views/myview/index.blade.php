@@ -8,11 +8,11 @@
     padding: 4px 6px; /* padding kecil */
 	text-align: center;
 	vertical-align: middle !important;
-}
+	}
 	.modal-dialog-scrollable .modal-body {
     overflow-y: auto !important;
     max-height: calc(100vh - 200px) !important;
-}
+	}
 
 </style>
 @endsection
@@ -107,18 +107,10 @@
 						<td>{{ $data->compd }}</td> 
 						<td>{{ $data->treat_code }}</td> 
 						<td>{{ $data->belt_cord }}</td> 
-						<td>
-							@if ($data->direction == 'lay_left')
-								LAY LEFT
-							@elseif($data->direction == 'lay_right')
-								LAY RIGHT
-							@else
-								LAY RIGHT/LEFT
-							@endif
-						</td> 
-						<td>{{ $data->posisi_edgetape == 'atas' ? 'ATAS' : 'TIDAK ADA' }}</td> 
+						<td>{{ $data->direction }}</td> 
+						<td>{{ $data->posisi_edgetape }}</td> 
 						<td>{{ $data->edgetape_b1 }}</td> 
-						<td>{{ $data->turn == 'normal' ? 'NORMAL' : 'DI BALIK 2 KALI' }}</td> 
+						<td>{{ $data->turn }}</td> 
 						<td>{{ $data->code_wraping }}</td> 
 						<td>{{ $data->width_after_wraping }}</td> 
 					</tr>
@@ -129,84 +121,6 @@
 	</div> 
 </div> 
  
-<!-- Modal Add Barang -->
-{{-- <div class="modal fade" id="exampleModalScrollable" tabindex="1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true"> 
-	<div class="modal-dialog modal-dialog-scrollable" role="document">
-		<div class="modal-content"> 
-			<div class="modal-header"> 
-				<h5 class="modal-title" id="exampleModalScrollableTitle">Tambah Data</h5> 
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
-					<span aria-hidden="true">&times;</span> 
-				</button> 
-			</div> 
-			<form action="{{ route('store') }}" method="POST"> 
-				@csrf 
-				<div class="modal-body"> 
-					<div class="form-group"> 
-						<label for="code_b1_b2_edgetape">CODE B1/B2 EDGETAPE</label> 
-						<input type="text" name="code_b1_b2_edgetape" id="code_b1_b2_edgetape" class="form-control" maxlength="10"  value="{{ old('code_b1_b2_edgetape') }}" required > 
-					</div> 
-					<div class="form-group"> 
-						<label for="code_b2">CODE B2 NON EDGETAPE</label> 
-						<input type="text" name="code_b2" id="code_b2" class="form-control" > 
-					</div> 
-					<div class="form-group"> 
-						<label for="width">WIDTH</label> 
-						<input type="number" name="width" id="width" class="form-control" step="any" > 
-					</div> 
-					<div class="form-group"> 
-						<label for="angel">ANGEL</label> 
-						<input type="number" name="angel" id="angel" class="form-control"> 
-					</div> 
-					<div class="form-group"> 
-						<label for="ga">GA</label> 
-						<input type="number" name="ga" id="ga" class="form-control" > 
-					</div> 
-					<div class="form-group"> 
-						<label for="compd">COMPD</label> 
-						<input type="text" name="compd" id="compd" class="form-control" > 
-					</div> 
-					<div class="form-group"> 
-						<label for="treat_code">TREAT-CODE</label> 
-						<input type="text" name="treat_code" id="treat_code" class="form-control"> 
-					</div> 
-					<div class="form-group"> 
-						<label for="belt_cord">BELT CODE</label> 
-						<input type="text" name="belt_cord" id="belt_cord" class="form-control"> 
-					</div> 
-					<div class="form-group"> 
-						<label for="direction">DIRECTION</label> 
-						<input type="text" name="direction" id="direction" class="form-control"> 
-					</div> 
-					<div class="form-group"> 
-						<label for="posisi_edgetape">POSISI EDGETAPE</label> 
-						<input type="text" name="posisi_edgetape" class="form-control" id="posisi_edgetape" > 
-					</div> 
-					<div class="form-group"> 
-						<label for="edgetape_b1">EDGETAPE B1</label> 
-						<input type="text" name="edgetape_b1" id="edgetape_b1" class="form-control" > 
-					</div> 
-					<div class="form-group"> 
-						<label for="turn">TURN</label> 
-						<input type="text" name="turn" id="turn" class="form-control"> 
-					</div> 
-					<div class="form-group"> 
-						<label for="code_wraping">CODE WRAPING</label> 
-						<input type="text" name="code_wraping" id="code_wraping" class="form-control"> 
-					</div> 
-					<div class="form-group"> 
-						<label for="width_after_wraping">WIDTH SETELAH WRAPING</label> 
-						<input type="number" name="width_after_wraping" id="width_after_wraping" class="form-control"> 
-					</div> 
-				</div> 
-				<div class="modal-footer"> 
-					<button type="button" class="btn btn-secondary" data-dismiss="modal"> Batal</button> 
-					<input type="submit" class="btn btn-primary btn-send" value="Simpan"> 
-				</div>  
-			</form> 
-		</div>
-	</div> 
-</div> --}}
 @if ($errors->any())
 <script>
     document.addEventListener('DOMContentLoaded', function () {

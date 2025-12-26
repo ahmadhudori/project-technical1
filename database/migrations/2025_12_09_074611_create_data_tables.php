@@ -21,10 +21,10 @@ return new class extends Migration
 			$table->string('compd');
 			$table->string('treat_code');
 			$table->string('belt_cord')->nullable(); //nanti dari table treatment
-			$table->enum('direction', ['lay_left', 'lay_right', 'lay_right_left']);
-			$table->enum('posisi_edgetape', ['atas', 'tidak_ada']);
+			$table->string('direction');
+			$table->string('posisi_edgetape');
 			$table->string('edgetape_b1');
-			$table->enum('turn', ['normal', 'dibalik_2_kali']);
+			$table->string('turn');
 			$table->string('code_wraping')->nullable();
 			$table->integer('width_after_wraping')->nullable();
             $table->timestamps();
