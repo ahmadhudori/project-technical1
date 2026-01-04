@@ -9,10 +9,11 @@
 	@vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-	<div style="width:70%; height:325px;" class="mx-auto">
+	<div style="width:70%; height:328px;" class="mx-auto">
 		<canvas id="sidewallChart"></canvas>
 	</div>
 	<div class="w-full mt-5"><p class="text-center">Total Area: {{ $tot_area }}</p></div>
+	<div class="w-full mt-5"><p class="text-center">Total Area BEC: {{ $totBEC }}</p></div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 

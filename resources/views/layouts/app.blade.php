@@ -11,9 +11,18 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+		<!-- Font awesome -->
+		<link rel="stylesheet" href="{{ asset('asset/vendor/fontawesome-free/css/fontawesome.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('asset/vendor/fontawesome-free/css/all.min.css') }}">
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+		<!-- Livewire -->
 		@livewireStyles
+
+		<!-- Styles -->
+		@stack('css')
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -34,5 +43,8 @@
             </main>
         </div>
 		@livewireScripts
+
+		<!-- font awesome js -->
+		<script src="{{ asset('asset/vendor/fontawesome-free/js/fontawesome.min.js') }}"></script>
     </body>
 </html>

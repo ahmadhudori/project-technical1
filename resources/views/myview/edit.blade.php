@@ -66,7 +66,7 @@
                 <label for="direction" class="@error('direction') text-danger @enderror">DIRECTION</label> 
                 <div class="input-group mb-3">
 					<select class="custom-select" id="direction" name="direction">
-						<option>Choose...</option>
+						<option value="">Choose...</option>
 						<option value="LAY RIGHT" @selected(old('direction', $data->direction)  == 'LAY RIGHT')>LAY RIGHT</option>
 						<option value="LAY LEFT" @selected(old('direction', $data->direction) == 'LAY LEFT')>LAY LEFT</option>
 						<option value="LAY RIGHT/LEFT" @selected(old('direction', $data->direction) == 'LAY RIGHT/LEFT')>LAY RIGHT/LEFT</option>
@@ -82,7 +82,7 @@
                 <label for="posisi_edgetape" class="@error('posisi_edgetape') text-danger @enderror">POSISI EDGETAPE</label> 
                 <div class="input-group mb-3">
 					<select class="custom-select" id="posisi_edgetape" name="posisi_edgetape">
-						<option>Choose...</option>
+						<option value="">Choose...</option>
 						<option value="ATAS" @selected(old('posisi_edgetape') || $data->posisi_edgetape == 'ATAS' || $data->posisi_edgetape == 'atas')>ATAS</option>
 						<option value="TIDAK ADA" @selected(old('posisi_edgetape') || $data->posisi_edgetape == 'TIDAK ADA' || $data->posisi_edgetape == 'tidak ada')>TIDAK ADA</option>
 					</select>
@@ -101,7 +101,7 @@
                 <label for="turn" class="@error('turn') text-danger @enderror">TURN</label> 
                 <div class="input-group mb-3">
 					<select class="custom-select" id="turn" name="turn">
-						<option>Choose...</option>
+						<option value="">Choose...</option>
 						<option value="NORMAL" @selected(old('turn') || $data->turn == 'NORMAL' || $data->turn == 'normal')>NORMAL</option>
 						<option value="DIBALIK 2 KALI" @selected(old('turn') || $data->turn == 'DIBALIK 2 KALI' || $data->turn == 'dibalik 2 kali')>DI BALIK 2 KALI</option>
 					</select>

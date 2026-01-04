@@ -25,7 +25,7 @@ class IndexController extends Controller
 
 	public function store(Request $request)
 	{
-		// dd($request->all());
+		// dd($request->direction);
 		$validation = Validator::make($request->all(), [
 			'code_b1_b2_edgetape' => 'required',
 			'width' => 'required',
@@ -68,7 +68,7 @@ class IndexController extends Controller
 	public function edit($id)
 	{
 		$data = DataTable::findOrFail($id);
-		return view('myview.edit', compact('data'));
+		return view('myview.editNew', compact('data'));
 	}
 
 	public function update(Request $request, $id)
@@ -109,6 +109,14 @@ class IndexController extends Controller
 		$data = DataTable::findOrFail($id);
 		$data->update($request->all());
 		Alert::success('Update data success');
+		return redirect()->route('dashboard');
+	}
+
+	public function destroy($id)
+	{
+		$data = DataTable::findOrFail($id);
+		$data->delete();
+		Alert::success('Delete data success');
 		return redirect()->route('dashboard');
 	}
 

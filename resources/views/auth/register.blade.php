@@ -1,5 +1,6 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+	<livewire:auth.register-with-avatar />
+    {{-- <form method="POST" action="{{ route('register') }}">
         @csrf
 
         <!-- Name -->
@@ -39,6 +40,22 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+		<div class="mt-4">
+			<label for="avatar" class="block text-sm font-medium text-gray-500">Avatar (Optional)</label>
+
+			<input type="file" name="avatar" id="avatar" accept="image/*" 
+			class="mt-1 block w-full text-sm text-gray-300
+			file:mr-4 file:py-2 file:px-4
+			file:rounded-md file:border-0
+			file:text-sm file:font-semibold
+			file:bg-blue-600 file:text-white
+			hover:file:bg-blue-700">
+		</div>
+		@if ('avatar')
+			<p>priview</p>
+			<img src="{{ $avatar->temporaryUrl() }}" alt="">
+		@endif
+
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
@@ -48,5 +65,5 @@
                 {{ __('Register') }}
             </x-primary-button>
         </div>
-    </form>
+    </form> --}}
 </x-guest-layout>

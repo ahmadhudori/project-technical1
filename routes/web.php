@@ -21,11 +21,11 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // table steel
-Route::get('/create', [IndexController::class, 'create'])->name('create');
+Route::get('/create', [IndexController::class, 'create'])->name('dashboard.create');
 Route::post('/add', [IndexController::class, 'store'])->name('store');
-Route::get('/edit/{id}', [IndexController::class, 'edit'])->name('edit');
+Route::get('/edit/{id}', [IndexController::class, 'edit'])->name('dashboard.edit');
 Route::put('/update/{id}', [IndexController::class, 'update'])->name('update');
-Route::post('/delete', [IndexController::class, 'delete'])->name('delete');
+Route::delete('/delete/{id}', [IndexController::class, 'destroy'])->name('delete');
 
 // import export
 Route::post('/data-table/import', [IndexController::class, 'import'])->name('import');
@@ -37,5 +37,5 @@ Route::get('/test', function() {
 	]);
 });
 
-Route::get('/input-cart', [CartController::class, 'index'])->name('input-cart');
-Route::post('/cart', [CartController::class, 'show'])->name('cart');
+Route::get('/input-chart', [CartController::class, 'index'])->name('input-chart');
+Route::post('/chart', [CartController::class, 'show'])->name('chart');
