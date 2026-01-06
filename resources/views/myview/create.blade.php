@@ -16,8 +16,8 @@
 @include('sweetalert::alert')
 <form action="{{ route('store') }}" method="POST" class="max-w-screen-lg space-y-6 mx-auto">
     @csrf
-    <fieldset class="border border-gray-300 rounded-lg p-6 bg-gray-800">
-        <legend class="px-2 text-lg font-semibold text-gray-300">
+    <fieldset class="border border-gray-400 dark:border-gray-300 rounded-lg p-6 bg-gray-100 dark:bg-gray-800">
+        <legend class="px-2 text-lg font-semibold text-gray-400 dark:text-gray-300">
             Tambah Data Steel
         </legend>
 
@@ -26,8 +26,8 @@
             {{-- CODE B1/B2 EDGETAPE --}}
             <div>
                 <label for="code_b1_b2_edgetape"
-                    class="block mb-1 text-sm font-medium text-white
-                    {{ $errors->has('code_b1_b2_edgetape') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium
+                    {{ $errors->has('code_b1_b2_edgetape') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     CODE B1/B2 EDGETAPE
                 </label>
                 <input type="text" id="code_b1_b2_edgetape" name="code_b1_b2_edgetape"
@@ -39,7 +39,7 @@
             {{-- CODE B2 NON EDGETAPE --}}
             <div>
                 <label for="code_b2"
-                    class="block mb-1 text-sm font-medium {{ $errors->has('code_b2') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium {{ $errors->has('code_b2') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     CODE B2 NON EDGETAPE
                 </label>
                 <input type="text" id="code_b2" name="code_b2"
@@ -50,7 +50,7 @@
             {{-- WIDTH --}}
             <div>
                 <label for="width"
-                    class="block mb-1 text-sm font-medium {{ $errors->has('width') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium {{ $errors->has('width') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     WIDTH
                 </label>
                 <input type="number" step="any" id="width" name="width"
@@ -61,7 +61,7 @@
             {{-- ANGEL --}}
             <div>
                 <label for="angel"
-                    class="block mb-1 text-sm font-medium {{ $errors->has('angel') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium {{ $errors->has('angel') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     ANGEL
                 </label>
                 <input type="number" step="any" id="angel" name="angel"
@@ -72,7 +72,7 @@
             {{-- GA --}}
             <div>
                 <label for="ga"
-                    class="block mb-1 text-sm font-medium {{ $errors->has('ga') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium {{ $errors->has('ga') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     GA
                 </label>
                 <input type="number" step="any" id="ga" name="ga"
@@ -83,7 +83,7 @@
             {{-- COMPD --}}
             <div>
                 <label for="compd"
-                    class="block mb-1 text-sm font-medium {{ $errors->has('compd') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium {{ $errors->has('compd') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     COMPD
                 </label>
                 <input type="text" id="compd" name="compd"
@@ -94,7 +94,7 @@
             {{-- TREAT CODE --}}
             <div>
                 <label for="treat_code"
-                    class="block mb-1 text-sm font-medium {{ $errors->has('treat_code') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium {{ $errors->has('treat_code') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     TREAT-CODE
                 </label>
                 <input type="text" id="treat_code" name="treat_code"
@@ -105,7 +105,7 @@
             {{-- BELT CODE --}}
             <div>
                 <label for="belt_cord"
-                    class="block mb-1 text-sm font-medium {{ $errors->has('belt_cord') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium {{ $errors->has('belt_cord') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     BELT CODE
                 </label>
                 <input type="text" id="belt_cord" name="belt_cord"
@@ -116,12 +116,12 @@
             {{-- DIRECTION --}}
             <div>
                 <label for="direction"
-                    class="block mb-1 text-sm font-medium {{ $errors->has('direction') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium {{ $errors->has('direction') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     DIRECTION
                 </label>
                 <select id="direction" name="direction"
                     class="w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
-                    <option value="">Choose...</option>
+                    <option value="" class="text-gray-400">Choose...</option>
                     <option value="LAY RIGHT" @selected(old('direction') == 'LAY RIGHT')>LAY RIGHT</option>
                     <option value="LAY LEFT" @selected(old('direction') == 'LAY LEFT')>LAY LEFT</option>
                     <option value="LAY RIGHT/LEFT" @selected(old('direction') == 'LAY RIGHT/LEFT')>LAY RIGHT/LEFT</option>
@@ -131,7 +131,7 @@
             {{-- POSISI EDGETAPE --}}
             <div>
                 <label for="posisi_edgetape"
-                    class="block mb-1 text-sm font-medium {{ $errors->has('posisi_edgetape') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium {{ $errors->has('posisi_edgetape') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     POSISI EDGETAPE
                 </label>
                 <select id="posisi_edgetape" name="posisi_edgetape"
@@ -145,7 +145,7 @@
             {{-- EDGETAPE B1 --}}
             <div>
                 <label for="edgetape_b1"
-                    class="block mb-1 text-sm font-medium {{ $errors->has('edgetape_b1') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium {{ $errors->has('edgetape_b1') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     EDGETAPE B1
                 </label>
                 <input type="text" id="edgetape_b1" name="edgetape_b1"
@@ -156,7 +156,7 @@
             {{-- TURN --}}
             <div>
                 <label for="turn"
-                    class="block mb-1 text-sm font-medium {{ $errors->has('turn') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium {{ $errors->has('turn') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     TURN
                 </label>
                 <select id="turn" name="turn"
@@ -170,7 +170,7 @@
             {{-- CODE WRAPING --}}
             <div>
                 <label for="code_wraping"
-                    class="block mb-1 text-sm font-medium {{ $errors->has('code_wraping') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium {{ $errors->has('code_wraping') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     CODE WRAPING
                 </label>
                 <input type="text" id="code_wraping" name="code_wraping"
@@ -181,7 +181,7 @@
             {{-- WIDTH AFTER WRAPING --}}
             <div>
                 <label for="width_after_wraping"
-                    class="block mb-1 text-sm font-medium {{ $errors->has('width_after_wraping') ? 'text-red-600' : 'text-gray-300' }}">
+                    class="block mb-1 text-sm font-medium {{ $errors->has('width_after_wraping') ? 'text-red-600' : 'text-gray-600 dark:text-gray-300' }}">
                     WIDTH SETELAH WRAPING
                 </label>
                 <input type="number" step="any" id="width_after_wraping" name="width_after_wraping"

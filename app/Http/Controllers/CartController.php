@@ -265,7 +265,7 @@ class CartController extends Controller
 			// ['x' => 10,   'y' => 15],
 		];
 
-		return view('cart.cart', compact(
+		return view('chart.cart', compact(
 			// 'labels',
 			'widthTotal',
 			'bec',

@@ -13,7 +13,7 @@ class DataTableExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return DataTable::all();
+        return DataTable::select('code_b1_b2_edgetape', 'width', 'angel', 'ga', 'compd', 'treat_code', 'belt_cord', 'direction', 'posisi_edgetape', 'edgetape_b1', 'turn', 'code_wraping', 'width_after_wraping')->get();
     }
 
 	public function headings(): array

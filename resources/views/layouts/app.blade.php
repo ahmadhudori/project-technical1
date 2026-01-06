@@ -18,15 +18,31 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+		<!-- Dark Mode -->
+		<script>
+            if (
+                localStorage.theme === "dark" ||
+                (!("theme" in localStorage) &&
+                    window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ) {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
+        </script>
+
 		<!-- Livewire -->
 		@livewireStyles
 
 		<!-- Styles -->
 		@stack('css')
+		<style>
+			[x-cloak] { display: none !important; }
+		</style>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+            <livewire:partials.navigation />
 
             <!-- Page Heading -->
             @isset($header)
@@ -46,5 +62,7 @@
 
 		<!-- font awesome js -->
 		<script src="{{ asset('asset/vendor/fontawesome-free/js/fontawesome.min.js') }}"></script>
+
+		@stack('js')
     </body>
 </html>

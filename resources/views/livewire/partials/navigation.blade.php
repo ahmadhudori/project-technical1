@@ -6,35 +6,102 @@
 					<div class="shrink-0">
 						<img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="size-8" />
 					</div>
-					<div class="hidden md:block">
+					<div class="block">
 						<div class="ml-10 flex items-baseline space-x-4">
 						<!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-						<a href="{{ route('dashboard') }}" aria-current="page" class="{{ (Route::is('dashboard.*') || Route::is('dashboard')) ? 'bg-gray-950/50 text-white' : 'hover:bg-white/5' }} rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Dashboard</a>
-						<a href="{{ route('input-chart') }}" class="{{ Route::is('input-chart') ? 'bg-gray-950/50 text-white' : 'hover:bg-white/5' }} rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Chart Sidewall</a>
-						<button x-data="{ openMaterialsMenu : false}">
-							<div @click="openMaterialsMenu = !openMaterialsMenu" class="relative rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">
+						<a href="{{ route('dashboard') }}" aria-current="page" class="{{ (Route::is('dashboard.*') || Route::is('dashboard')) ? 'hover:bg-indigo-800/50 text-white bg-indigo-800' : 'hover:bg-white/5 text-gray-300' }} rounded-md px-3 py-2 text-sm font-medium ">Dashboard</a>
+						<a href="{{ route('input-chart') }}" class="{{ Route::is('input-chart') ? 'hover:bg-indigo-800/50 text-white bg-indigo-800' : 'hover:bg-white/5 text-gray-300' }} rounded-md px-3 py-2 text-sm font-medium ">Chart Sidewall</a>
+						<div
+							x-data="{
+								openMaterialsMenu: false,
+								openMaterial1: false,
+								openMaterial2: false,
+							}"
+							class="relative"
+						>
+							<!-- MAIN MENU -->
+							<button
+								@click="openMaterialsMenu = !openMaterialsMenu"
+								class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white"
+							>
 								Materials
-								<div
-									x-show="openMaterialsMenu"
-									@click.outside="openMaterialsMenu = false"
-									x-transition
-									class="absolute right-0 z-50 mt-2 w-48 rounded-md bg-gray-800 py-1 shadow-lg"
-								>
-									<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
-									material 1
-									</a>
-									<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
-									material 2
-									</a>
+							</button>
+
+							<!-- DROPDOWN LEVEL 1 -->
+							<div
+								x-show="openMaterialsMenu"
+								x-cloak
+								@click.outside="
+									openMaterialsMenu = false;
+									openMaterial1 = false;
+									openMaterial2 = false;
+								"
+								x-transition
+								class="absolute right-0 z-50 mt-2 w-56 rounded-md bg-gray-800 py-1 shadow-lg"
+							>
+								<!-- MATERIAL 1 -->
+								<div class="relative">
+									<button
+										@click="openMaterial1 = !openMaterial1; openMaterial2 = false"
+										:class="openMaterial1 ? 'bg-gray-700' : ''"
+										class="flex w-full items-center justify-between px-4 py-2 text-sm text-gray-300 hover:bg-white/5"
+									>
+										Material 1
+										<span x-show="!openMaterial1"><i class="fas fa-caret-right"></i></span>
+										<span x-show="openMaterial1"><i class="fas fa-caret-down"></i></span>
+									</button>
+
+									<!-- DROPDOWN LEVEL 2 -->
+									<div
+										x-show="openMaterial1"
+										x-cloak
+										x-transition
+										class="absolute top-0 left-full ml-1 w-32 rounded-md bg-gray-800 py-1 shadow-lg"
+									>
+										<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+											List A
+										</a>
+										<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+											List B
+										</a>
+									</div>
+								</div>
+
+								<!-- MATERIAL 2 -->
+								<div class="relative">
+									<button
+										@click="openMaterial2 = !openMaterial2; openMaterial1 = false"
+										:class="openMaterial2 ? 'bg-gray-700' : ''"
+										class="flex w-full items-center justify-between px-4 py-2 text-sm text-gray-300 hover:bg-white/5"
+									>
+										Material 2
+										<span x-show="!openMaterial2"><i class="fas fa-caret-right"></i></span>
+										<span x-show="openMaterial2"><i class="fas fa-caret-down"></i></span>
+									</button>
+
+									<!-- DROPDOWN LEVEL 2 -->
+									<div
+										x-show="openMaterial2"
+										x-cloak
+										x-transition
+										class="absolute top-0 left-full ml-1 w-48 rounded-md bg-gray-800 py-1 shadow-lg"
+									>
+										<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+											List C
+										</a>
+										<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+											List D
+										</a>
+									</div>
 								</div>
 							</div>
-						</button>
+						</div>
 						<a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Calendar</a>
 						<a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Reports</a>
 						</div>
 					</div>
 				</div>
-				<div class="hidden md:block">
+				<div class="block">
 					<div class="ml-4 flex items-center md:ml-6">
 						<div class="flex items-center text-white mr-4">
 							<span class="mr-1 text-sm">light</span>
@@ -69,6 +136,7 @@
 							</button>
 							<div
 								x-show="openProfileMenu"
+								x-cloak
 								@click.outside="openProfileMenu = false"
 								x-transition
 								class="absolute right-0 z-50 mt-2 w-48 rounded-md bg-gray-800 py-1 shadow-lg"

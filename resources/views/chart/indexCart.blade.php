@@ -18,7 +18,7 @@
 			@csrf
 			<div class="mx-auto px-5">
 				{{-- Width Total --}}
-				<label class="block font-semibold mb-2 text-gray-300">Width Total</label>
+				<label class="block font-semibold mb-2 dark:dark:text-gray-300 text-indigo-950">Width Total</label>
 				<div class="flex gap-2 overflow-x-auto pb-5">
 					@for ($i=1; $i<= 20; $i++)
 						
@@ -27,7 +27,7 @@
 				</div>
 
 				{{-- GA Total --}}
-				<label class="block font-semibold mb-2 text-gray-300">GA Total</label>
+				<label class="block font-semibold mb-2 dark:text-gray-300 text-indigo-950">GA Total</label>
 				<div class="flex gap-2 overflow-x-auto pb-5">
 					@for ($i=1; $i<= 20; $i++)
 						<input type="number" name="{{ 'g'.$i }}" class="{{ $i === 1 ? 'ms-1' : ($i === 20 ? 'me-1' : '') }} w-14 bg-slate-100 px-2 py-1 mt-1 border rounded text-center focus:ring focus:ring-blue-300" step="any">
@@ -36,7 +36,7 @@
 				
 				
 				{{-- GA BEC --}}
-				<label class="block font-semibold mb-2 text-gray-300">GA BEC</label>
+				<label class="block font-semibold mb-2 dark:text-gray-300 text-indigo-950">GA BEC</label>
 				<div class="flex gap-2 overflow-x-auto pb-5">
 					@for ($i=1; $i<= 6; $i++)
 						
@@ -50,7 +50,7 @@
 				@endphp
 
 				@foreach ($fields as $name => $label)
-					<label class="block font-semibold mb-2 text-gray-300">{{ $label }}</label>
+					<label class="block font-semibold mb-2 dark:text-gray-300 text-indigo-950">{{ $label }}</label>
 					<div class="flex gap-2 overflow-x-auto pb-5">
 						@for ($i = 0; $i < 20; $i++)
 							<input
@@ -65,7 +65,7 @@
 				@endforeach
 
 				{{-- Width RC1 --}}
-				<label class="block font-semibold mb-2 text-gray-300">Width RC1</label>
+				<label class="block font-semibold mb-2 dark:text-gray-300 text-indigo-950">Width RC1</label>
 				<div class="flex gap-2 overflow-x-auto pb-5">
 					@for ($i=1; $i<= 20; $i++)
 						<input type="number" name="{{ 'wrc1_'.$i }}" class="{{ $i === 1 ? 'ms-1' : ($i === 20 ? 'me-1' : '') }} w-14 bg-slate-100 px-2 py-1 mt-1 border rounded text-center focus:ring focus:ring-blue-300" step="any">
@@ -74,7 +74,7 @@
 
 
 				{{-- GA RC1 --}}
-				<label class="block font-semibold mb-2 text-gray-300">GA RC1</label>
+				<label class="block font-semibold mb-2 dark:text-gray-300 text-indigo-950">GA RC1</label>
 				<div class="flex gap-2 overflow-x-auto pb-5">
 					@for ($i=1; $i<= 20; $i++)
 						<input type="number" name="{{ 'garc1_'.$i }}" class="{{ $i === 1 ? 'ms-1' : ($i === 20 ? 'me-1' : '') }} w-14 bg-slate-100 px-2 py-1 mt-1 border rounded text-center focus:ring focus:ring-blue-300" step="any">

@@ -19,8 +19,8 @@
     @csrf
     @method('PUT')
 
-    <fieldset class="border border-gray-300 rounded-lg p-6">
-        <legend class="px-2 text-lg font-semibold text-gray-300">
+    <fieldset class="border border-gray-400 dark:border-gray-300 rounded-lg p-6 bg-gray-100 dark:bg-gray-800">
+        <legend class="px-2 text-lg font-semibold text-gray-400 dark:text-gray-300">
             Ubah Data Steel
         </legend>
 
@@ -32,7 +32,7 @@
                     @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('code_b1_b2_edgetape'),
-                        'text-gray-300' => !$errors->has('code_b1_b2_edgetape'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('code_b1_b2_edgetape'),
                     ])>
                     CODE B1/B2 EDGETAPE
                 </label>
@@ -47,7 +47,7 @@
                 <label for="code_b2" @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('code_b2'),
-                        'text-gray-300' => !$errors->has('code_b2'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('code_b2'),
                     ])>
                     CODE B2 NON EDGETAPE
                 </label>
@@ -61,7 +61,7 @@
                 <label for="width" @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('width'),
-                        'text-gray-300' => !$errors->has('width'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('width'),
                     ])>WIDTH</label>
                 <input type="number" step="any" id="width" name="width"
                     value="{{ old('width', $data->width) }}"
@@ -73,7 +73,7 @@
                 <label for="angel" @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('angel'),
-                        'text-gray-300' => !$errors->has('angel'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('angel'),
                     ])>ANGEL</label>
                 <input type="number" step="any" id="angel" name="angel"
                     value="{{ old('angel', $data->angel) }}"
@@ -85,7 +85,7 @@
                 <label for="ga" @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('ga'),
-                        'text-gray-300' => !$errors->has('ga'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('ga'),
                     ])>GA</label>
                 <input type="number" step="any" id="ga" name="ga"
                     value="{{ old('ga', $data->ga) }}"
@@ -97,7 +97,7 @@
                 <label for="compd" @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('compd'),
-                        'text-gray-300' => !$errors->has('compd'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('compd'),
                     ])>COMPD</label>
                 <input type="text" id="compd" name="compd"
                     value="{{ old('compd', $data->compd) }}"
@@ -109,7 +109,7 @@
                 <label for="treat_code" @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('treat_code'),
-                        'text-gray-300' => !$errors->has('treat_code'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('treat_code'),
                     ])>TREAT-CODE</label>
                 <input type="text" id="treat_code" name="treat_code"
                     value="{{ old('treat_code', $data->treat_code) }}"
@@ -121,7 +121,7 @@
                 <label for="belt_cord" @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('belt_cord'),
-                        'text-gray-300' => !$errors->has('belt_cord'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('belt_cord'),
                     ])>BELT CODE</label>
                 <input type="text" id="belt_cord" name="belt_cord"
                     value="{{ old('belt_cord', $data->belt_cord) }}"
@@ -133,7 +133,7 @@
                 <label for="direction" @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('direction'),
-                        'text-gray-300' => !$errors->has('direction'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('direction'),
                     ])>DIRECTION</label>
                 <select id="direction" name="direction"
                     class="w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
@@ -149,7 +149,7 @@
                 <label for="posisi_edgetape" @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('posisi_edgetape'),
-                        'text-gray-300' => !$errors->has('posisi_edgetape'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('posisi_edgetape'),
                     ])>
                     POSISI EDGETAPE
                 </label>
@@ -166,7 +166,7 @@
                 <label for="edgetape_b1" @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('edgetape_b1'),
-                        'text-gray-300' => !$errors->has('edgetape_b1'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('edgetape_b1'),
                     ])>
                     EDGETAPE B1
                 </label>
@@ -180,7 +180,7 @@
                 <label for="turn" @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('turn'),
-                        'text-gray-300' => !$errors->has('turn'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('turn'),
                     ])>TURN</label>
                 <select id="turn" name="turn"
                     class="w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
@@ -195,7 +195,7 @@
                 <label for="code_wraping" @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('code_wraping'),
-                        'text-gray-300' => !$errors->has('code_wraping'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('code_wraping'),
                     ])>
                     CODE WRAPING
                 </label>
@@ -209,7 +209,7 @@
                 <label for="width_after_wraping" @class([
                         'block mb-1 text-sm font-medium',
                         'text-red-600' => $errors->has('width_after_wraping'),
-                        'text-gray-300' => !$errors->has('width_after_wraping'),
+                        'text-gray-600 dark:text-gray-300' => !$errors->has('width_after_wraping'),
                     ])>
                     WIDTH SETELAH WRAPING
                 </label>
@@ -241,12 +241,12 @@
 				type="submit"
 				class="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 flex items-center gap-2"
 				onclick="return confirm('Are you sure you want to delete this item?');"
+				formaction="{{ route('delete', $data->id) }}"
 			>
 			<i class="fas fa-trash-alt"></i>
 				<span>Delete</span>
 			</button>
 		</form>
     </div>
-
 </form>
 @endsection
