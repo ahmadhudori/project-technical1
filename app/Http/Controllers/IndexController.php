@@ -15,12 +15,12 @@ class IndexController extends Controller
     public function index()
 	{
 		$datas = DataTable::all();
-		return view('myview.index', compact('datas'));
+		return view('bead-steel.index', compact('datas'));
 	}
 
 	public function create()
 	{
-		return view('myview.create');
+		return view('bead-steel.create');
 	}
 
 	public function store(Request $request)
@@ -68,7 +68,7 @@ class IndexController extends Controller
 	public function edit($id)
 	{
 		$data = DataTable::findOrFail($id);
-		return view('myview.editNew', compact('data'));
+		return view('bead-steel.editNew', compact('data'));
 	}
 
 	public function update(Request $request, $id)

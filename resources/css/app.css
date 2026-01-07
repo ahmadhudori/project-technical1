@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* geser circle darkmode */
 #dark-toggle:checked ~ label div.toggle-circle {
     @apply translate-x-3;
+}
+
+/* prevent open alpinejs mengedip ketika load page  */
+[x-cloak] {
+    display: none !important;
 }

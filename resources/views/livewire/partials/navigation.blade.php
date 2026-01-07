@@ -10,31 +10,36 @@
 						<div class="ml-10 flex items-baseline space-x-4">
 						<!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
 						<a href="{{ route('dashboard') }}" aria-current="page" class="{{ (Route::is('dashboard.*') || Route::is('dashboard')) ? 'hover:bg-indigo-800/50 text-white bg-indigo-800' : 'hover:bg-white/5 text-gray-300' }} rounded-md px-3 py-2 text-sm font-medium ">Dashboard</a>
-						<a href="{{ route('input-chart') }}" class="{{ Route::is('input-chart') ? 'hover:bg-indigo-800/50 text-white bg-indigo-800' : 'hover:bg-white/5 text-gray-300' }} rounded-md px-3 py-2 text-sm font-medium ">Chart Sidewall</a>
 						<div
 							x-data="{
-								openMaterialsMenu: false,
-								openMaterial1: false,
-								openMaterial2: false,
+								orderDieMenu: false,
+								treadMenu: false,
+								sidewallMenu: false,
+								doubleMenu: false,
+								tripleMenu: false,
+								blackMenu: false,
+								whiteMenu: false,
 							}"
 							class="relative"
 						>
 							<!-- MAIN MENU -->
 							<button
-								@click="openMaterialsMenu = !openMaterialsMenu"
-								class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white"
+								@click="orderDieMenu = !orderDieMenu"
+								class="{{ Route::is('chart.*') ? 'hover:bg-indigo-800/50 text-white bg-indigo-800' : 'hover:bg-white/5 text-gray-300' }} rounded-md px-3 py-2 text-sm font-medium "
 							>
-								Materials
+								Order Die
 							</button>
 
 							<!-- DROPDOWN LEVEL 1 -->
 							<div
-								x-show="openMaterialsMenu"
+								x-show="orderDieMenu"
 								x-cloak
 								@click.outside="
-									openMaterialsMenu = false;
-									openMaterial1 = false;
-									openMaterial2 = false;
+									orderDieMenu = false;
+									treadMenu = false;
+									sidewallMenu = false;
+									blackMenu = false;
+									whiteMenu = false;
 								"
 								x-transition
 								class="absolute right-0 z-50 mt-2 w-56 rounded-md bg-gray-800 py-1 shadow-lg"
@@ -42,27 +47,27 @@
 								<!-- MATERIAL 1 -->
 								<div class="relative">
 									<button
-										@click="openMaterial1 = !openMaterial1; openMaterial2 = false"
-										:class="openMaterial1 ? 'bg-gray-700' : ''"
+										@click="treadMenu = !treadMenu; sidewallMenu = false;  blackMenu = false; whiteMenu = false"
+										:class="treadMenu ? 'bg-gray-700' : ''"
 										class="flex w-full items-center justify-between px-4 py-2 text-sm text-gray-300 hover:bg-white/5"
 									>
-										Material 1
-										<span x-show="!openMaterial1"><i class="fas fa-caret-right"></i></span>
-										<span x-show="openMaterial1"><i class="fas fa-caret-down"></i></span>
+										Tread
+										<span x-show="!treadMenu"><i class="fas fa-caret-right"></i></span>
+										<span x-show="treadMenu"><i class="fas fa-caret-down"></i></span>
 									</button>
 
 									<!-- DROPDOWN LEVEL 2 -->
 									<div
-										x-show="openMaterial1"
+										x-show="treadMenu"
 										x-cloak
 										x-transition
 										class="absolute top-0 left-full ml-1 w-32 rounded-md bg-gray-800 py-1 shadow-lg"
 									>
 										<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
-											List A
+											Double
 										</a>
 										<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
-											List B
+											Triple
 										</a>
 									</div>
 								</div>
@@ -70,28 +75,73 @@
 								<!-- MATERIAL 2 -->
 								<div class="relative">
 									<button
-										@click="openMaterial2 = !openMaterial2; openMaterial1 = false"
-										:class="openMaterial2 ? 'bg-gray-700' : ''"
+										@click="sidewallMenu = !sidewallMenu; treadMenu = false"
+										:class="sidewallMenu ? 'bg-gray-700' : ''"
 										class="flex w-full items-center justify-between px-4 py-2 text-sm text-gray-300 hover:bg-white/5"
 									>
-										Material 2
-										<span x-show="!openMaterial2"><i class="fas fa-caret-right"></i></span>
-										<span x-show="openMaterial2"><i class="fas fa-caret-down"></i></span>
+										Sidewall
+										<span x-show="!sidewallMenu"><i class="fas fa-caret-right"></i></span>
+										<span x-show="sidewallMenu"><i class="fas fa-caret-down"></i></span>
 									</button>
 
 									<!-- DROPDOWN LEVEL 2 -->
 									<div
-										x-show="openMaterial2"
+										x-show="sidewallMenu"
 										x-cloak
 										x-transition
-										class="absolute top-0 left-full ml-1 w-48 rounded-md bg-gray-800 py-1 shadow-lg"
+										class="absolute top-0 left-full ml-1 w-32 rounded-md bg-gray-800 py-1 shadow-lg"
 									>
-										<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
-											List C
-										</a>
-										<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
-											List D
-										</a>
+										<button 
+										@click="blackMenu = !blackMenu; whiteMenu = false"
+										:class="blackMenu ? 'bg-gray-700' : ''"
+										class="flex w-full items-center justify-between px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+											Black
+											<span x-show="!blackMenu"><i class="fas fa-caret-right"></i></span>
+											<span x-show="blackMenu"><i class="fas fa-caret-down"></i></span>
+										</button>
+
+										<!-- DROPDOWN LEVEL 3 -->
+										<button
+											x-show="blackMenu"
+											x-cloak
+											x-transition
+											class="absolute top-0 left-full ml-1 w-32 rounded-md bg-gray-800 py-1 shadow-lg"
+										>
+											<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+												2 Compound
+											</a>
+											<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+												3 Compound
+											</a>
+											<a href="{{ route('chart.input-black-sidewall-4-compd') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+												4 Compound
+											</a>
+										</button>
+										<button 
+											class="relative flex w-full items-center justify-between px-4 py-2 text-sm text-gray-300 hover:bg-white/5"
+											@click="whiteMenu = !whiteMenu; blackMenu = false"
+											:class="whiteMenu ? 'bg-gray-700' : ''">
+											White
+											
+											<span x-show="!whiteMenu"><i class="fas fa-caret-right"></i></span>
+											<span x-show="whiteMenu"><i class="fas fa-caret-down"></i></span>
+											<div
+												x-show="whiteMenu"
+												x-cloak
+												x-transition
+												class="absolute top-0 left-full ml-1 w-32 rounded-md bg-gray-800 py-1 shadow-lg"
+											>
+												<a class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+													2 Compound
+												</a>
+												<a class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+													3 Compound
+												</a>
+												<a class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+													4 Compound
+												</a>
+											</div>
+										</button>
 									</div>
 								</div>
 							</div>
@@ -101,10 +151,12 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="block">
 					<div class="ml-4 flex items-center md:ml-6">
+						{{-- Toggle Dark Mode --}}
 						<div class="flex items-center text-white mr-4">
-							<span class="mr-1 text-sm">light</span>
+							<span id="light" class="mr-1 text-lg text-amber-300"><i class="fas fa-sun"></i></span>
 							<input
 								type="checkbox"
 								name="dark-toggle"
@@ -117,7 +169,7 @@
 										class="toggle-circle h-4 w-4 bg-white rounded-full transition duration-300 ease-in-out"></div>
 								</div>
 							</label>
-							<span class="ml-1 text-sm">dark</span>
+							<span id="dark" class="ml-1 text-lg"><i class="fas fa-moon"></i></span>
 						</div>
 
 						<!-- Profile dropdown -->
@@ -128,11 +180,13 @@
 							>
 								<span class="absolute -inset-1.5"></span>
 								<span class="sr-only">Open user menu</span>
-								<img
+								@auth
+									<img
 								src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('asset/img/avatar2.png') }}"
 								class="size-8 rounded-full outline -outline-offset-1 outline-white/10  object-cover"
 								alt="avatar"
 								/>
+								@endauth
 							</button>
 							<div
 								x-show="openProfileMenu"
@@ -142,7 +196,9 @@
 								class="absolute right-0 z-50 mt-2 w-48 rounded-md bg-gray-800 py-1 shadow-lg"
 							>
 								<div class="flex justify-center">
-									<img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('asset/img/avatar2.png') }}" class="w-28 h-24 rounded rounded-s object-cover" alt="">
+									@auth
+										<img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('asset/img/avatar2.png') }}" class="w-28 h-24 rounded rounded-s object-cover" alt="">
+									@endauth
 								</div>
 								<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
 								Your profile
@@ -169,15 +225,27 @@
 		<script>
 			const darkToggle = document.querySelector("#dark-toggle");
 			const html = document.querySelector("html");
+			const lightIcon = document.querySelector('#light');
+			const darkIcon = document.querySelector('#dark');
+			if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+				lightIcon.classList.remove('text-amber-300');
+				darkIcon.classList.add('text-indigo-300');
+			} else {
+				darkIcon.classList.remove('text-indigo-300');
+				lightIcon.classList.add('text-amber-300');
+			}
 
 			darkToggle.addEventListener("click", function () {
 			if (darkToggle.checked) {
 				html.classList.add("dark");
 				localStorage.theme = "dark";
-				console.log("dark");
+				lightIcon.classList.remove('text-amber-300');
+				darkIcon.classList.add('text-indigo-300');
 			} else {
 				html.classList.remove("dark");
 				localStorage.theme = "light";
+				darkIcon.classList.remove('text-indigo-300');
+				lightIcon.classList.add('text-amber-300');
 			}
 			});
 

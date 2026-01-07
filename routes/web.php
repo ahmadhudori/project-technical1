@@ -21,21 +21,25 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // table steel
-Route::get('/create', [IndexController::class, 'create'])->name('dashboard.create');
-Route::post('/add', [IndexController::class, 'store'])->name('store');
-Route::get('/edit/{id}', [IndexController::class, 'edit'])->name('dashboard.edit');
-Route::put('/update/{id}', [IndexController::class, 'update'])->name('update');
-Route::delete('/delete/{id}', [IndexController::class, 'destroy'])->name('delete');
+Route::group(['prefix' => 'bead-steel'], function () {
+	Route::get('create', [IndexController::class, 'create'])->name('dashboard.create');
+	Route::post('/add', [IndexController::class, 'store'])->name('store');
+	Route::get('/edit/{id}', [IndexController::class, 'edit'])->name('dashboard.edit');
+	Route::put('/update/{id}', [IndexController::class, 'update'])->name('update');
+	Route::delete('/delete/{id}', [IndexController::class, 'destroy'])->name('delete');
 
-// import export
-Route::post('/data-table/import', [IndexController::class, 'import'])->name('import');
-Route::get('/data-table/export', [IndexController::class, 'export'])->name('export');
+	// import export
+	Route::post('/import', [IndexController::class, 'import'])->name('import');
+	Route::get('/export', [IndexController::class, 'export'])->name('export');
+});
+
 
 Route::get('/test', function() {
 	return view('test', [
 		'datas' => DataTable::all()
 	]);
 });
-
-Route::get('/input-chart', [CartController::class, 'index'])->name('input-chart');
-Route::post('/chart', [CartController::class, 'show'])->name('chart');
+Route::group(['prefix' => 'chart'], function () {
+	Route::get('/input-black-sidewall-4-compd', [CartController::class, 'inputChart4Compd'])->name('chart.input-black-sidewall-4-compd');
+	Route::post('/chart-sidewall-4-compd', [CartController::class, 'show'])->name('chart.chart-sidewall-4-compd');
+});
