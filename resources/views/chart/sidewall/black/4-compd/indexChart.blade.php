@@ -15,8 +15,8 @@
 @section('content')
 @include('sweetalert::alert')
 	<div class="max-w-[90rem] mx-auto p-6">
-		<h1 class="text-3xl dark:text-gray-300 text-center font-semibold m-4">Sidewall 4 compd</h1>
-		<form action="{{ route('chart.chart-sidewall-4-compd') }}" method="POST" class="flex">
+		<h1 class="text-3xl dark:text-gray-300 text-center font-semibold m-4">Black Sidewall 4 compound</h1>
+		<form action="{{ route('chart.chart-black-sidewall-4-compd') }}" method="POST" class="flex">
 			@csrf
 			<div class="mx-auto px-5">
 				{{-- Width Total --}}
@@ -57,22 +57,21 @@
 					];
 				@endphp
 
-				@foreach ($fields as $name => $label)
+{{-- GA RC --}}
 					<div class="flex gap-3 items-center">
-						<label class="w-24 font-semibold mb-2 dark:text-gray-300 text-indigo-950">{{ $label }}</label>
+						<label class="w-24 font-semibold mb-2 dark:text-gray-300 text-indigo-950">GA RC</label>
 						<div class="flex gap-2 overflow-x-auto mb-5">
-							@for ($i = 0; $i < 20; $i++)
+							@for ($i = 1; $i <= 20; $i++)
 								<input
 									type="number"
 									step="any"
-									name="{{ $name }}[]"
-									class="{{ $i === 0 ? 'ms-1' : ($i === 19 ? 'me-1' : '') }} w-10 bg-slate-100 px-2 py-1 mt-1 border rounded text-center focus:ring focus:ring-blue-300"
-									value="{{ old($name . '.' . $i) }}"
+									name="{{ 'rc'.$i }}"
+									class="{{ $i === 1 ? 'ms-1' : ($i === 20 ? 'me-1' : '') }} w-10 bg-slate-100 px-2 py-1 mt-1 border rounded text-center focus:ring focus:ring-blue-300"
+									value="{{ old('rc'. $i) }}"
 								>
 							@endfor
 						</div>
 					</div>
-				@endforeach
 
 				{{-- Width RC1 --}}
 				<div class="flex gap-3 items-center">

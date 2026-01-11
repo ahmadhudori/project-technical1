@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Chart\BlackSidewallController;
+use App\Http\Controllers\Chart\WhiteSidewallController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Models\DataTable;
@@ -39,7 +40,5 @@ Route::get('/test', function() {
 		'datas' => DataTable::all()
 	]);
 });
-Route::group(['prefix' => 'chart'], function () {
-	Route::get('/input-black-sidewall-4-compd', [CartController::class, 'inputChart4Compd'])->name('chart.input-black-sidewall-4-compd');
-	Route::post('/chart-sidewall-4-compd', [CartController::class, 'show'])->name('chart.chart-sidewall-4-compd');
-});
+
+require __DIR__.'/sidewall.php';

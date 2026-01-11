@@ -107,41 +107,43 @@
 											x-transition
 											class="absolute top-0 left-full ml-1 w-32 rounded-md bg-gray-800 py-1 shadow-lg"
 										>
-											<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+											<a href="{{ route('chart.input-black-sidewall-2-compd') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
 												2 Compound
 											</a>
-											<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+											<a href="{{ route('chart.input-black-sidewall-3-compd') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
 												3 Compound
 											</a>
 											<a href="{{ route('chart.input-black-sidewall-4-compd') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
 												4 Compound
 											</a>
 										</button>
-										<button 
-											class="relative flex w-full items-center justify-between px-4 py-2 text-sm text-gray-300 hover:bg-white/5"
-											@click="whiteMenu = !whiteMenu; blackMenu = false"
-											:class="whiteMenu ? 'bg-gray-700' : ''">
-											White
-											
-											<span x-show="!whiteMenu"><i class="fas fa-caret-right"></i></span>
-											<span x-show="whiteMenu"><i class="fas fa-caret-down"></i></span>
-											<div
+										<div class="relative">
+											<button 
+												class="relative flex w-full items-center justify-between px-4 py-2 text-sm text-gray-300 hover:bg-white/5"
+												@click="whiteMenu = !whiteMenu; blackMenu = false"
+												:class="whiteMenu ? 'bg-gray-700' : ''">
+												White
+												
+												<span x-show="!whiteMenu"><i class="fas fa-caret-right"></i></span>
+												<span x-show="whiteMenu"><i class="fas fa-caret-down"></i></span>
+											</button>
+											<button
 												x-show="whiteMenu"
 												x-cloak
 												x-transition
 												class="absolute top-0 left-full ml-1 w-32 rounded-md bg-gray-800 py-1 shadow-lg"
 											>
-												<a class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+												<a href="{{ route('chart.input-white-sidewall-2-compd') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
 													2 Compound
 												</a>
-												<a class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+												<a href="{{ route('chart.input-white-sidewall-3-compd') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
 													3 Compound
 												</a>
-												<a class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+												<a href="{{ route('chart.input-white-sidewall-4-compd') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
 													4 Compound
 												</a>
-											</div>
-										</button>
+											</button>
+										</div>
 									</div>
 								</div>
 							</div>
