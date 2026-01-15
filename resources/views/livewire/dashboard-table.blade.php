@@ -145,9 +145,9 @@
 					</thead>
 
 					<tbody class="divide-y divide-gray-200">
-						@foreach ($datas as $data)
+						@forelse ($datas as $data)
 							<tr class="odd:bg-white even:bg-gray-50 hover:bg-gray-100">
-								<td class="px-2 py-1 border text-center">{{ $loop->iteration }}</td>
+								<td class="px-2 py-1 border text-center">{{ $datas->firstItem() + $loop->index }}</td>
 								<td class="px-2 py-1 border text-blue-600 hover:underline">
 									<a href="{{ route('dashboard.edit', $data->id) }}">
 										{{ $data->code_b1_b2_edgetape }}
@@ -167,7 +167,13 @@
 								<td class="px-2 py-1 border">{{ $data->code_wraping }}</td>
 								<td class="px-2 py-1 border">{{ $data->width_after_wraping }}</td>
 							</tr>
-						@endforeach
+						@empty
+							<tr>
+								<td colspan="15" class="px-2 py-4 border text-center text-gray-500">
+									Data tidak ditemukan.
+								</td>
+							</tr>
+						@endforelse
 					</tbody>
 				</table>
 				<div class="mt-6 flex justify-center">

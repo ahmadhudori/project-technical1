@@ -4,18 +4,18 @@
 	<div style="width:70%; height:328px;" class="mx-auto bg-gray-50 dark:bg-gray-600 p-4 rounded">
 		<canvas id="sidewallChart"></canvas>
 	</div>
-	<div style="width:70%; height:328px;" class="mx-auto bg-gray-50 dark:bg-gray-600 p-4 rounded my-5">
+	<div style="width:70%; height:328px;" class="mx-auto bg-gray-50 dark:bg-gray-600 p-4 rounded mt-5">
 		<canvas id="sidewallChartWhite"></canvas>
 	</div>
 @endsection
 @push('js')
-	<script src=" https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js "></script>
+	{{-- <script src=" https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js "></script> --}}
 
-	<script>
+	<script type="module">
 		const dataNormal = {
 			widthTotal : @json($widthTotal),
 			rc : @json($rc),
-			ga : @json($ga),
+			ga : @json($lga),
 			gaLabels : @json($gaLabels)
 		};
 
@@ -24,7 +24,8 @@
 			rc : @json($rcWhite),
 			ga : @json($gaWhite),
 			gaLabels : @json($gaLabelsWhite),
-			newData : @json($newDataWhite)
+			newData : @json($newDataWhite),
+			gravity : @json($gravity),
 		}
 
 		function gaTextLabelPluginFactory(gaLabels) {
@@ -119,7 +120,7 @@
 					x: {
 						type: 'linear',
 						min: 0,
-						max: @json($wpTerakhirValue),
+						max: @json($lwpTerakhirValue),
 						title: { display: true, text: 'Width' },
 						ticks: { stepSize: 10 }
 					},
@@ -149,8 +150,9 @@
 						parsing: false,
 						borderColor: '#f39c12',
 						backgroundColor: '#ffffff',
+						borderWidth: 2,
 						pointStyle: 'crossRot',
-						pointRadius: 5,
+						pointRadius: 1,
 						tension: 0,
 					},
 					{
@@ -159,8 +161,9 @@
 						parsing: false,
 						borderColor: '#c0392b',
 						backgroundColor: '#c0392b',
+						borderWidth: 2,
 						pointStyle: 'rect',
-						pointRadius: 4,
+						pointRadius: 1,
 						tension: 0,
 					},
 					{
@@ -169,7 +172,8 @@
 						parsing: false,
 						borderColor: '#7f8c8d',
 						backgroundColor: '#7f8c8d',
-						pointRadius: 3,
+						borderWidth: 2,
+						pointRadius: 1,
 						tension: 0,
 					},
 					{
@@ -178,7 +182,18 @@
 						parsing: false,
 						borderColor: '#f1c40f',
 						backgroundColor: '#f1c40f',
-						pointRadius: 3,
+						borderWidth: 2,
+						pointRadius: 1,
+						tension: 0,
+					},
+					{
+						label: 'Gravity',
+						data: dataWhite.gravity,
+						parsing: false,
+						borderColor: '#8680E8',
+						backgroundColor: '#8680E8',
+						borderWidth: 2,
+						pointRadius: 1,
 						tension: 0,
 					}
 				]
@@ -204,7 +219,7 @@
 					x: {
 						type: 'linear',
 						min: 0,
-						max: 210,
+						max: @json($rwpTerakhirValue),
 						title: { display: true, text: 'Width' },
 						ticks: { stepSize: 10 }
 					},

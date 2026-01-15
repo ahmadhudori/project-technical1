@@ -14,50 +14,54 @@ class WhiteSidewallController extends Controller
 
 	public function showChartWhiteSidewall2Compd(Request $request)
 	{
-			$w = [];
-			$g = [];
+			// Left Start
+			// grafik width total start
+			$lw = [];
+			$lg = [];
 
 			for ($i = 1; $i <= 20; $i++) {
-				$valueW = $request->input('w'.$i);
-				$valueG = $request->input('g'.$i);
-				if ($valueW !== null) {
-					$w[$i] = (float) $valueW; 
+				$valueLW = $request->input('lw'.$i);
+				$valueLG = $request->input('lg'.$i);
+				if ($valueLW !== null) {
+					$lw[$i] = (float) $valueLW; 
 				}
 				
-				if ($valueG !== null) {
-					$g[$i] = (float) $valueG;
+				if ($valueLG !== null) {
+					$lg[$i] = (float) $valueLG;
 				}
 			}
 
 			// Variable wp
-			$wp = [];
-			$wp[1] = $w[1];
+			$lwp = [];
+			$lwp[1] = $lw[1];
 
-			for ($i = 2; $i <= count($w); $i++) {
-				$wp[$i] = $wp[$i - 1] + $w[$i];
+			for ($i = 2; $i <= count($lw); $i++) {
+				$lwp[$i] = $lwp[$i - 1] + $lw[$i];
 			}
 			// $widthTotal
 			$widthTotal = [];
 
-			$widthTotal[] = ['x' => 0,  'y' => $g[1]];
+			$widthTotal[] = ['x' => 0,  'y' => $lg[1]];
 
-			for ($i = 2; $i <= count($wp); $i++) {
-					$widthTotal[] = ['x' => $wp[$i], 'y' => $g[$i]];
+			for ($i = 2; $i <= count($lwp); $i++) {
+					$widthTotal[] = ['x' => $lwp[$i], 'y' => $lg[$i]];
 				}
+			// grafik width total end
 
-			//	RC
+			//	grafik RC start
 			$rc = [
 				['x' => 157, 'y' => 0],
 				['x' => 182, 'y' => 5.7],
 				['x' => 199, 'y' => 3.5],
 				['x' => 207, 'y' => 0.5],
 			];
+			// grafik RC end
 
 			// GA (titik hijau lurus di atas)
-			for ($i = 2; $i <= count($w); $i++) {
-				$ga[] = ['x' => $wp[$i], 'y' => 13];
-				$ga[] = ['x' => $wp[$i], 'y' => 15];
-				$ga[] = ['x' => null, 'y' => null];
+			for ($i = 2; $i <= count($lw); $i++) {
+				$lga[] = ['x' => $lwp[$i], 'y' => 13];
+				$lga[] = ['x' => $lwp[$i], 'y' => 15];
+				$lga[] = ['x' => null, 'y' => null];
 			}
 
 			// variable titik tengah GA
@@ -68,10 +72,11 @@ class WhiteSidewallController extends Controller
 			// $cw5 = $wp[5] + ($w[6] / 2);
 			// $cw6 = $wp[6] + ($w[7] / 2);
 
+			// titik tengah tiap ga untuk menaruh label w
 			$cw = [];
-			$cw[1] = $wp[2] / 2;
-			for ($i = 2; $i < count($w); $i++) {
-				$cw[$i] = $wp[$i] + ($w[$i + 1] / 2);
+			$cw[1] = $lwp[2] / 2;
+			for ($i = 2; $i < count($lw); $i++) {
+				$cw[$i] = $lwp[$i] + ($lw[$i + 1] / 2);
 			}
 
 			// $gaLabels = [
@@ -91,30 +96,38 @@ class WhiteSidewallController extends Controller
 				$gaLabels[] = [
 					'x' => $cw[$i],
 					'y' => 14,
-					'text' => $w[$i + 1]
+					'text' => $lw[$i + 1]
 				];
 			}
 
-			$wpTerakhirValue = $wp[count($wp)] + 5;
-			// dd($wpTerakhirValue);
+			$lwpTerakhirValue = $lwp[count($lwp)] + 5;
+			// Left end
 
-			// white sidewall
-			$widthTotalWhite = [
-				['x' => 0, 'y' => 0.5],
-				['x' => 20, 'y' => 6.1],
-				['x' => 35, 'y' => 8.2],
-				['x' => 60, 'y' => 8.2],
-				['x' => 77, 'y' => 5.8],
-				['x' => 88, 'y' => 5.6],
-				['x' => 103, 'y' => 5.8],
-				['x' => 118, 'y' => 5.6],
-				['x' => 129, 'y' => 5.8],
-				['x' => 149, 'y' => 5.8],
-				['x' => 174, 'y' => 6.8],
-				['x' => 182, 'y' => 5.7],
-				['x' => 199, 'y' => 3.5],
-				['x' => 207, 'y' => 0.5],
-			];
+			// Right Start
+			$rw = [];
+			$rg = [];
+			for ($i = 1; $i <=20; $i++) {
+				$valueRW = $request->input('rw'. $i);
+				$valueRG = $request->input('rg' . $i);
+				if ($valueRW !== null) {
+					$rw[$i] = (float) $valueRW;
+				}
+				if ($valueRG !== null) {
+					$rg[$i] = (float) $valueRG;
+				}
+			}
+			
+			$rwp = [];
+			$rwp[1] = $rw[1];
+			for ($i = 2; $i <= count($rw); $i++) {
+				$rwp[$i] = $rwp[$i - 1] + $rw[$i];
+			}
+
+			$widthTotalWhite = [];
+			$widthTotalWhite[] = ['x' => 0, 'y' => $rg[1]];
+			for ($i = 2; $i <= count($rwp); $i++) {
+				$widthTotalWhite[] = ['x' => $rwp[$i], 'y' => $rg[$i]];
+			}
 
 			$rcWhite = [
 				['x' => 157, 'y' => 0],
@@ -181,34 +194,62 @@ class WhiteSidewallController extends Controller
 				['x' => 203, 'y' => 14, 'text' => '8'],
 			];
 
-			$newDataWhite = [
-				['x' => 0, 'y' => 0.5],
-				['x' => 20, 'y' => 6.1],
-				['x' => 35, 'y' => 8.2],
-				['x' => 60, 'y' => 8.2],
-				['x' => 77, 'y' => 5.8],
-				['x' => 88, 'y' => 0.6],
-				['x' => 103, 'y' => 0.6],
-				['x' => 118, 'y' => 0.6],
-				['x' => 129, 'y' => 5.8],
-				['x' => 149, 'y' => 5.8],
-				['x' => 174, 'y' => 6.8],
-				['x' => 182, 'y' => 5.7],
-				['x' => 199, 'y' => 3.5],
-				['x' => 207, 'y' => 0.5],
+			// grafik new data white start
+			$ww = [];
+			$wg = [];
+			for ($i = 1; $i <= 20; $i++) {
+				$valueWW = $request->input('ww'. $i);
+				$valueWG = $request->input('wg'. $i);
+				if ($valueWW !== null) {
+					$ww[$i] = (float) $valueWW;
+				}
+				if ($valueWG !== null) {
+					$wg[$i] = (float) $valueWG;
+				}
+			}
+
+			$wwp = [];
+			$wwp[1] = $ww[1];
+			for ($i = 2; $i <= count($ww); $i++) {
+				$wwp[$i] = $wwp[$i - 1] + $ww[$i];
+			}
+
+
+			$newDataWhite = [];
+			$newDataWhite[] = ['x' => 0, 'y' => $wg[1]];
+			for ($i = 2; $i <= count($ww); $i++) {
+				$newDataWhite[] = ['x' => $wwp[$i], 'y' => $wg[$i]];
+			}
+			// grafik new data white end
+
+			$gravity = [
+				['x' => 67, 'y' => 7.2],
+				['x' => 67, 'y' => 7.7],
+				['x' => 77, 'y' => 6.3],
+				['x' => 88, 'y' => 6.1],
+				['x' => 103, 'y' => 6.3],
+				['x' => 118, 'y' => 6.1],
+				['x' => 129, 'y' => 6.3],
+				['x' => 139, 'y' => 6.3],
+				['x' => 139, 'y' => 5.8],
 			];
+
+			$rwpTerakhirValue = $rwp[count($rwp)] + 5;
+			// Right End
 
 			return view('chart.sidewall.white.2-compd.chart', compact(
 				'widthTotal',
 				'rc',
-				'ga',
+				'lga',
 				'gaLabels',
-				'wpTerakhirValue',
+				'lwpTerakhirValue',
 				'widthTotalWhite',
 				'rcWhite',
 				'gaWhite',
 				'gaLabelsWhite',
-				'newDataWhite'
+				'newDataWhite',
+				'gravity',
+				'rwpTerakhirValue'
 			));
 		
 	}
