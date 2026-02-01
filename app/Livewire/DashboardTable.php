@@ -15,7 +15,7 @@ class DashboardTable extends Component
 	public $search = '';
 	public $perPage;
 
-	public function updateSearch()
+	public function updatingSearch()
 	{
 		$this->resetPage();
 	}

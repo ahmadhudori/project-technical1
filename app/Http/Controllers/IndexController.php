@@ -14,8 +14,7 @@ class IndexController extends Controller
 {
     public function index()
 	{
-		$datas = DataTable::all();
-		return view('bead-steel.index', compact('datas'));
+		return view('bead-steel.index');
 	}
 
 	public function create()

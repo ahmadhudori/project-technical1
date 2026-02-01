@@ -202,7 +202,7 @@
 										<img src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('asset/img/avatar2.png') }}" class="w-28 h-24 rounded rounded-s object-cover" alt="">
 									@endauth
 								</div>
-								<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
+								<a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
 								Your profile
 								</a>
 								<a href="#" class="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5">
